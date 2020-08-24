@@ -1,0 +1,15 @@
+version: '3.7' # 修正時点で最新のversionを記載しています。1.xは動きませんのでご注意を。
+services:
+    db:
+        image: mysql:5.7
+        ports:
+            - "3306:3306"
+        volumes:
+            # 初期データを投入するSQLが格納されているdir
+            - ./db/mysql_init:/docker-entrypoint-initdb.d
+            # 永続化するときにマウントするdir
+            - ./db/mysql_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
