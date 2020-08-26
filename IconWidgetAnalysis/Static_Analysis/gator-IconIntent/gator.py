@@ -66,7 +66,7 @@ def extract_jar_libs(path_base):
 
 
 def decode_apk(apk_path, decode_path, frame_path, output=None):
-    cmd = ["java", "-jar", "apktool.jar", "d", apk_path,
+    cmd = ["java", "-jar", f'{g_gator_root}/apktool.jar', "d", apk_path,
            "--frame-path", frame_path,
            "-o", decode_path, "-f"]
 
