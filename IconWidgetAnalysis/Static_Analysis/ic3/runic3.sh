@@ -18,8 +18,8 @@ do
 appName=`basename $appPath .apk`
 retargetedPath=testspace/$appName.apk
 
-mysql -h localhost --user=root --password=root --protocol=tcp -e 'drop database if exists cc; create database cc'
-mysql -h localhost --user=root --password=root --protocol=tcp cc < schema
+mysql -h localhost --user=root --password=jiaozhuys05311 --protocol=tcp -e 'drop database if exists cc; create database cc'
+mysql -h localhost --user=root --password=jiaozhuys05311 --protocol=tcp cc < schema
 
 rm -rf output/$appName
 mkdir output/$appName
