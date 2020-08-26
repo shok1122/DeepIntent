@@ -1,7 +1,7 @@
 set -eu
 
 apk_dir=$1
-sdk_dir=$ANDROID_SDK
+sdk_dir=$ANDROID_HOME
 gator_root="/home/deepintent/repo/DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent"
 
 rm -rf ./log_output
