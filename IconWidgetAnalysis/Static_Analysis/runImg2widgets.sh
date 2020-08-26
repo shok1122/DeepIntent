@@ -2,10 +2,11 @@ set -eu
 
 apk_dir=$1
 sdk_dir=$ANDROID_SDK
-apktool_dir=$APKTOOL_HOME
+gator_root="/home/deepintent/repo/DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent"
 
 rm -rf ./log_output
-rm selectedAPK.txt
+rm -f selectedAPK.txt
+rm -f result.txt
 
 for x in $(ls $apk_dir)
 do
@@ -22,7 +23,7 @@ mkdir /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent/output
 #argv[1] Your apk folder directory
 #argv[2] Your Android sdk directory
 #argv[3] Your apktool.jar's directory, it is included in gator-IconIntent folder
-python3 /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent/gator.py $apk_dir $sdk_dir $apktool_dir
+python3 /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent/gator.py $apk_dir $sdk_dir $gator_root
 
 rm -rf /DeepIntent/IconWidgetAnalysis/Static_Analysis/output
 mv /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent/output/ /DeepIntent/IconWidgetAnalysis/Static_Analysis/
