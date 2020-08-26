@@ -252,7 +252,8 @@ def main():
 
     # init state
     start_index = g_start_index
-    stop_index = g_stop_index if g_stop_index > g_start_index else len(apps)
+    stop_index = len(apps)
+    #stop_index = g_stop_index if g_stop_index > g_start_index else len(apps)
     for i in range(start_index, stop_index):
         app = apps[i]
         if not app.endswith(".apk"):
