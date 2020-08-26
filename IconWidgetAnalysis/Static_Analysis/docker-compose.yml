@@ -6,10 +6,11 @@ services:
             - "3306:3306"
         volumes:
             # 初期データを投入するSQLが格納されているdir
-            - ./db/mysql_init:/docker-entrypoint-initdb.d
+            #- ./db/mysql_init:/docker-entrypoint-initdb.d
             # 永続化するときにマウントするdir
-            - ./db/mysql_data:/var/lib/mysql
+            - ./db:/var/lib/mysql
+            #- /mnt/share/db:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: admin
             MYSQL_USER: test
             MYSQL_PASSWORD: test
