@@ -210,17 +210,17 @@ public class APKCallGraph {
 		 * Scan every input widget-handler mapping, skip when no mapping is found.
 		 * If mapping is found, build extended static call graph of the app, extract subgraph(s), check API(s) and permission.
 		 */
-		String apk = "com.Abby_Alex";
-		//String apk = args[0].substring(args[0].lastIndexOf("/"), args[0].indexOf(".apk"));
-		//String appPath = args[1];
-		String appPath = "/Users/shaoyang/Desktop/";
-		//String inputCSVPath = args[2];
-		String inputCSVPath = "/Users/shaoyang/Desktop/";
-		//String permissionOutput = args[3];
-		String permissionOutput = "/Users/shaoyang/Desktop/";
+		//String apk = "com.Abby_Alex";
+		String apk = args[0].substring(args[0].lastIndexOf("/"), args[0].indexOf(".apk"));
+		String appPath = args[1];
+		//String appPath = "/Users/shaoyang/Desktop/";
+		String inputCSVPath = args[2];
+		//String inputCSVPath = "/Users/shaoyang/Desktop/";
+		String permissionOutput = args[3];
+		//String permissionOutput = "/Users/shaoyang/Desktop/";
 		//String apk = "nextcloud";
-		//String ic3 = args[4];
-		String ic3 = "/Users/shaoyang/Desktop/ic3output/";
+		String ic3 = args[4];
+		//String ic3 = "/Users/shaoyang/Desktop/ic3output/";
 
 		System.out.println("Start analyze apk: " + apk + ".apk");
 
@@ -267,7 +267,7 @@ public class APKCallGraph {
 		 */
 		SetupApplication app = new SetupApplication(androidPlatformPath, apkPath);
 		Options.v().set_android_api_version(18);
-		app.calculateSourcesSinksEntrypoints("/Users/shaoyang/Work/APKCallGraph/SourcesAndSinks.txt");
+		app.calculateSourcesSinksEntrypoints("APKCallGraph/SourcesAndSinks.txt");
 		soot.G.reset();
 		Options.v().set_keep_line_number(true);
 		Options.v().set_src_prec(Options.src_prec_apk);
@@ -282,7 +282,7 @@ public class APKCallGraph {
 		Options.v().set_allow_phantom_refs(true);
 		Options.v().set_keep_line_number(true);
 		Options.v().set_output_format(Options.output_format_jimple);
-		app.setCallbackFile("/Users/shaoyang/Work/APKCallGraph/AndroidCallbacks.txt");
+		app.setCallbackFile("APKCallGraph/AndroidCallbacks.txt");
 
 		Scene.v().loadNecessaryClasses();
 
@@ -498,9 +498,9 @@ public class APKCallGraph {
 
 		DOTExporter<MethodNode, CallEdge> exporter = new DOTExporter<MethodNode, CallEdge>(
 				apkg.new MethodnodeIdProvider(), apkg.new MethodNodeNameProvider(), null);
-		File file = new File("/Users/shaoyang/Downloads/Static_Analysis/dot_output/" + apk + "/");
+		File file = new File("dot_output/" + apk + "/");
 		file.mkdir();
-		exporter.exportGraph(jg, new FileWriter("/Users/shaoyang/Downloads/Static_Analysis/dot_output/" + apk + "/" + apk + ".dot"));
+		exporter.exportGraph(jg, new FileWriter("dot_output/" + apk + "/" + apk + ".dot"));
 	}
 
 
@@ -629,7 +629,7 @@ public class APKCallGraph {
 
 			DOTExporter<MethodNode, CallEdge> exporter = new DOTExporter<MethodNode, CallEdge>(
 					apkg.new MethodnodeIdProvider(), apkg.new MethodNodeNameProvider(), null);
-			exporter.exportGraph(subGraph, new FileWriter("/Users/shaoyang/Downloads/Static_Analysis/dot_output/" + apk + "/" + method + ".dot"));
+			exporter.exportGraph(subGraph, new FileWriter("dot_output/" + apk + "/" + method + ".dot"));
 
 			isGenerated = true;
 
