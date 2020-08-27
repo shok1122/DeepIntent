@@ -2,7 +2,7 @@ set -eu
 
 apk_dir=$1
 sdk_dir=$ANDROID_HOME
-gator_root="/home/deepintent/repo/DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent"
+gator_root=gator-IconIntent
 
 rm -rf ./log_output
 rm -f selectedAPK.txt
@@ -23,20 +23,23 @@ mkdir /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent/output
 #argv[1] Your apk folder directory
 #argv[2] Your Android sdk directory
 #argv[3] Your apktool.jar's directory, it is included in gator-IconIntent folder
-python3 /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent/gator.py $apk_dir $sdk_dir $gator_root
+python3 gator-IconIntent/gator.py $apk_dir $sdk_dir $gator_root
 
-rm -rf /DeepIntent/IconWidgetAnalysis/Static_Analysis/output
-mv /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent/output/ /DeepIntent/IconWidgetAnalysis/Static_Analysis/
+#rm -rf /DeepIntent/IconWidgetAnalysis/Static_Analysis/output
+#mv /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator-IconIntent/output /DeepIntent/IconWidgetAnalysis/Static_Analysis/gator_output
 
 rm -rf permission_output
 rm -rf dot_output
-mkdir output/img2widgets
 mkdir permission_output
 mkdir dot_output
 
 #run icon-widget-handler association
-java -jar wid.jar $apk_dir #argv[1]: Your apk folder directory
-java -jar ImageToWidgetAnalyzer.jar output/ output/ output/ selectedAPK.txt
+(
+cd WidImageResolver
+java -jar ../wid.jar $apk_dir #argv[1]: Your apk folder directory
+mv output/* ../output
+)
+java -jar ImageToWidgetAnalyzer.jar output output output/ selectedAPK.txt
 
 #run ic3
 sh ./ic3/runic3.sh $apk_dir #argv[1]: Your apk folder directory
