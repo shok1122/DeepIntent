@@ -6,5 +6,6 @@ result.txt
 selectedAPK.txt
 db/*
 log_output
+WidImageResolver/logs/*
 
 !.gitkeep
