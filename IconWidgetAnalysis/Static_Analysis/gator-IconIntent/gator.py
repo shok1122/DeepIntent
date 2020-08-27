@@ -120,7 +120,7 @@ def invoke_gator_on_apk(
            "-listenerSpecFile", soot_android_path + "/listeners.xml",
            "-wtgSpecFile", soot_android_path + '/wtg.xml']
     cmd.extend(options)
-    # print(" ".join(cmd))
+    print(" ".join(cmd))
 
     if timeout == 0:
         return subprocess.run(cmd, stdout=output, stderr=output)
