@@ -2,7 +2,7 @@ import csv
 import os
 import sys
 
-output = open("./permissions.csv", "w")
+output = open("./output/permissions.csv", "w")
 header = ["APK", "Image", "WID", "WID Name", "Layout", "Handler", "Method", "Permissions"]
 writer = csv.DictWriter(output, fieldnames = header)
 writer.writeheader()

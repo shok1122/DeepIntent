@@ -1,9 +1,9 @@
 import os
 import csv
 
-inputf = "/Users/shaoyang/Desktop/permissions.csv"
-inputf2 = "/Users/shaoyang/Desktop/1tomore.txt"
-outputf = "/Users/shaoyang/Desktop/outputP.csv"
+inputf = "output/permissions.csv"
+inputf2 = "1tomore.txt"
+outputf = "output/outputP.csv"
 methods = dict()
 count = 0
 
