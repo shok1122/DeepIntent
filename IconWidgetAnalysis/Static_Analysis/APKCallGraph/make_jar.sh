@@ -1,4 +1,8 @@
 #!/bin/sh
 
-jar -cvfm APKCallGraph.jar bin/META-INF/MANIFEST.MF bin/*.class
+(
+cd bin
+jar -cvfm APKCallGraph.jar META-INF/MANIFEST.MF *.class
+mv APKCallGraph.jar ../
+)
 
