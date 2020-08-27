@@ -25,7 +25,7 @@ rm -rf output/$appName
 mkdir output/$appName
 
 timeout 1800 java -Xmx24000m -jar RetargetedApp.jar $forceAndroidJar $appPath $retargetedPath
-timeout 1800 java -Xmx24000m -jar ic3-0.2.0-full.jar -apkormanifest $appPath -input $retargetedPath -cp $forceAndroidJar -db cc.properties -dbname cc
+timeout 1800 java -Xmx24000m -jar ic3-0.2.0-full.jar -apkormanifest $appPath -input $retargetedPath -cp $forceAndroidJar -protobuf output/$appName
 var=$((var+1))
 done
 echo "finished $var apk files."
