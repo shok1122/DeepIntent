@@ -755,8 +755,10 @@ public class APKCallGraph {
 							ArrayList<String> lineNums = new ArrayList<>();
 							for (Stmt s: stmts){
 								Unit u = (Unit)s;
-								LineNumberTag tag = (LineNumberTag)u.getTag("LineNumberTag");
-								lineNums.add(String.valueOf(tag.getLineNumber()));
+								if (u.hasTag("LineNumberTag")){
+									LineNumberTag tag = (LineNumberTag)u.getTag("LineNumberTag");
+									lineNums.add(String.valueOf(tag.getLineNumber()));
+								}
 							}
 							bw.write(line  + handler + "\t" +
 									method + "\t" +
