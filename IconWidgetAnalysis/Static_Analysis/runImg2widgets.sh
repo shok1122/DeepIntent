@@ -60,8 +60,8 @@ print_title "Run runic3.sh"
 sh ./ic3/runic3.sh $apk_dir #argv[1]: Your apk folder directory
 
 python3 parse_mappings.py jellybean_allmappings.txt
-mysql -h localhost --user=root --password=jiaozhuys05311 --protocol=tcp -e 'drop database if exists APKCalls; create database APKCalls'
-mysql -h localhost --user=root --password=jiaozhuys05311 --protocol=tcp APKCalls < schema_APKCalls
+mysql -h localhost --user=root --password=admin --protocol=tcp -e 'drop database if exists APKCalls; create database APKCalls'
+mysql -h localhost --user=root --password=admin --protocol=tcp APKCalls < schema_APKCalls
 
 #run handler-permission association
 for app in `ls $apk_dir/*.apk`

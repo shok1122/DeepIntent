@@ -6,7 +6,7 @@ set -eu
 cd ic3
 
 appDir=$1
-forceAndroidJar=/Users/shaoyang/Library/Android/sdk/platforms/android-18/android.jar
+forceAndroidJar=$ANDROID_HOME/platforms/android-18/android.jar
 
 rm -rf testspace
 mkdir testspace
@@ -18,14 +18,14 @@ do
 appName=`basename $appPath .apk`
 retargetedPath=testspace/$appName.apk
 
-mysql -h localhost --user=root --password=jiaozhuys05311 --protocol=tcp -e 'drop database if exists cc; create database cc'
-mysql -h localhost --user=root --password=jiaozhuys05311 --protocol=tcp cc < schema
+mysql -h localhost --user=root --password=admin --protocol=tcp -e 'drop database if exists cc; create database cc'
+mysql -h localhost --user=root --password=admin --protocol=tcp cc < schema
 
 rm -rf output/$appName
 mkdir output/$appName
 
 timeout 1800 java -Xmx24000m -jar RetargetedApp.jar $forceAndroidJar $appPath $retargetedPath
-timeout 1800 java -Xmx24000m -jar ic3-0.2.0-full.jar -apkormanifest $appPath -input $retargetedPath -cp $forceAndroidJar -db cc.properties -dbname cc -protobuf output/$appName
+timeout 1800 java -Xmx24000m -jar ic3-0.2.0-full.jar -apkormanifest $appPath -input $retargetedPath -cp $forceAndroidJar -db cc.properties -dbname cc
 var=$((var+1))
 done
 echo "finished $var apk files."
