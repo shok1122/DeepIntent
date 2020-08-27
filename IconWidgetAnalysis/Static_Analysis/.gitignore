@@ -4,3 +4,6 @@ output
 permissions.csv
 result.txt
 selectedAPK.txt
+db/*
+
+!.gitkeep
