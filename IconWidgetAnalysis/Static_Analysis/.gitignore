@@ -7,5 +7,7 @@ selectedAPK.txt
 db/*
 log_output
 WidImageResolver/logs/*
+dot_output
+permission_output
 
 !.gitkeep
