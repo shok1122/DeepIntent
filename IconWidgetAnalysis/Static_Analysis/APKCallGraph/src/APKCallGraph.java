@@ -75,7 +75,7 @@ public class APKCallGraph {
 	static ArrayList<String> handlers = new ArrayList<>();
 	static HashMap<String, ArrayList<Stmt>> methodToStmts = new HashMap<>();
 
-	static String androidPlatformPath = "/Users/shaoyang/Library/Android/sdk/platforms/android-18/android.jar";
+	static String androidPlatformPath = "/home/deepintent/Android/platforms/android-18/android.jar";
 
 
 
@@ -672,7 +672,7 @@ public class APKCallGraph {
 		String methodClass = method.substring(1, method.indexOf(":"));
 		String sql = "select Permission from outputmapping where Method = '" + method + "'";
 		String driver = "com.mysql.cj.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/APKCalls?user=root&password=jiaozhuys05311&serverTimezone=GMT";
+		String url = "jdbc:mysql://localhost:3306/APKCalls?user=root&password=admin&serverTimezone=GMT";
 		try {
 			Class.forName(driver);
 			connection = DriverManager.getConnection(url);
