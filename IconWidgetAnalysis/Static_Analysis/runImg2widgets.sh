@@ -42,10 +42,10 @@ java -jar ImageToWidgetAnalyzer.jar output/ output/ output/ selectedAPK.txt
 sh ./ic3/runic3.sh $apk_dir #argv[1]: Your apk folder directory
 
 #run handler-permission association
-for app in `ls /$apk_dir/*.apk`
+for app in `ls $apk_dir/*.apk`
 do
 echo $app
-java -jar APKCallGraph.jar $app $apk_dir /DeepIntent/IconWidgetAnalysis/Static_Analysis/img2widgets/ /DeepIntent/IconWidgetAnalysis/Static_Analysis/permission_output/ /DeepIntent/IconWidgetAnalysis/Static_Analysis/ic3/output/
+java -jar APKCallGraph/APKCallGraph.jar $app $apk_dir output/img2widgets permission_output ic3/output
 done
 
 #combine results and get 1-to-more mapping using 1tomore.txt
