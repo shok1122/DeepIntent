@@ -39,10 +39,14 @@ cd WidImageResolver
 java -jar ../wid.jar $apk_dir #argv[1]: Your apk folder directory
 mv output/* ../output
 )
-java -jar ImageToWidgetAnalyzer.jar output output output/ selectedAPK.txt
+java -jar ImageToWidgetAnalyzer.jar output output output/img2widgets selectedAPK.txt
 
 #run ic3
 sh ./ic3/runic3.sh $apk_dir #argv[1]: Your apk folder directory
+
+python3 parse_mappings.py jellybean_allmappings.txt
+mysql -h localhost --user=root --password=jiaozhuys05311 --protocol=tcp -e 'drop database if exists APKCalls; create database APKCalls'
+mysql -h localhost --user=root --password=jiaozhuys05311 --protocol=tcp APKCalls < schema_APKCalls
 
 #run handler-permission association
 for app in `ls $apk_dir/*.apk`
